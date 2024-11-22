@@ -1,0 +1,20 @@
+LunarDevelopments.LiveAPI.AndroidApplication(WebView).API-Type=AllPurpose&ID=UserManagement_CollectUserData
+
+// All data collected is protected and used for debugging. No personal info is taken or shared!
+ AllowedData;
+  $Print&CreateLog = AndroidVersion                       // The User's Android version
+  $Print&CreateLog = UserInterfaceVersion                 // The UI version of the OS
+  $Print&CreateLog = InternetProtocolV4Address            // The devices IPV4 address
+  $Print&CreateLog = InternetProtocolV6Address            // The devices IPV6 address
+  $Print&CreateLog = MobileWiFiMACAddress                 // The devices MAC address
+  $Print&CreateLog = AndroidPermissionsGranted            // Checks if the app has the correct permissions
+  $Print&CreateLog = ApplicationUsageTime                 // Shows how long the app has been in use for
+  $Print&CreateLog = CurrentApplicationVersion            // Shows the current app version
+  $Print&CreateLog = ApplicationInstalltionDate           // Shows when and how the app was installed
+
+// Obfuscates the logs into unreadable text and sends it to the database
+ ObscureData?MainStreamIO&Type=HTTPS
+ LiveImporter * CharacterEngine_1-0-0
+  EncryptionMethod'Blank'_CharactersPerCharacter(64)      // Every character gets converted into 64 characters
+    EncryptKeyWords: Galaxy, Nebula, Star, Moon, Planet, Sun, Gas, Light, Dark, Quasar, Matter, Earth
+                     Saturn, Mars, Jupiter, Mercury

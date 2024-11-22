@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LunarTok</title>
+  <style>
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0a0c0e;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+    }
+
+    .top-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .top-section img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .top-section h4 {
+      font-size: 1.2rem;
+      margin: 10px 0 5px;
+    }
+
+    .top-section p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .rounded-body {
+      background-color: #1e1e1e;
+      border: 2px solid white;
+      border-radius: 15px;
+      width: 90%;
+      padding: 20px;
+      margin-top: 30px;
+      box-sizing: border-box;
+    }
+
+    .line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .line:last-child {
+      margin-bottom: 0;
+    }
+
+    .line p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .line button {
+      background-color: #2d4b6b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .line button.clicked {
+      background-color: #4c7b9e;
+    }
+
+    .popup {
+      position: fixed;
+      bottom: -100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      background-color: #1e1e1e;
+      border: 2px solid white;
+      border-radius: 15px;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: bottom 0.3s ease-in-out;
+    }
+
+    .popup img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    .popup h4 {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .popup p {
+      font-size: 0.9rem;
+      margin: 10px 0 20px;
+    }
+
+    .popup button {
+      background-color: #2d4b6b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .popup button:active {
+      transform: scale(0.98);
+    }
+
+    .popup.show {
+      bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-section">
+    <img src="assets/branding/logo.png" alt="Logo">
+    <h4>LunarTok</h4>
+    <p>By Lunar Developments & Fiona</p>
+      <p>V0.0.42 Beta</p>
+  </div>
+
+  <div class="rounded-body">
+    <div class="line">
+      <p>Display over other apps</p>
+      <button onclick="showPopup(0, this)">Allow</button>
+    </div>
+    <div class="line">
+      <p>Microphone access</p>
+      <button onclick="showPopup(1, this)">Allow</button>
+    </div>
+    <div class="line">
+      <p>Camera access</p>
+      <button onclick="showPopup(2, this)">Allow</button>
+    </div>
+  </div>
+
+  <div id="popup-0" class="popup">
+    <img src="assets/icons/overlay.png" alt="Popup Icon">
+    <h4>Display Over Apps</h4>
+    <p>Allow LunarTok to display over other apps?</p>
+    <button onclick="closePopup(0, true)">Allow</button>
+    <button onclick="closePopup(0, false)">Deny</button>
+  </div>
+
+  <div id="popup-1" class="popup">
+    <img src="assets/icons/microphone.png" alt="Popup Icon">
+    <h4>Microphone Access</h4>
+    <p>Allow LunarTok to access Your microphone?</p>
+    <button onclick="closePopup(1, true)">Allow</button>
+    <button onclick="closePopup(1, false)">Deny</button>
+  </div>
+
+  <div id="popup-2" class="popup">
+    <img src="assets/icons/camera.png" alt="Popup Icon">
+    <h4>Camera Access</h4>
+    <p>Allow LunarTok to access Your camera?</p>
+    <button onclick="closePopup(2, true)">Allow</button>
+    <button onclick="closePopup(2, false)">Deny</button>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.rounded-body button');
+    const popups = document.querySelectorAll('.popup');
+    let clickedCount = 0;
+
+    function showPopup(index, button) {
+      const popup = document.getElementById(`popup-${index}`);
+      popup.classList.add('show');
+      popup.dataset.buttonIndex = Array.from(buttons).indexOf(button);
+    }
+
+    function closePopup(index, approve) {
+      const popup = document.getElementById(`popup-${index}`);
+      popup.classList.remove('show');
+      if (approve) {
+        const buttonIndex = popup.dataset.buttonIndex;
+        const mainButton = buttons[buttonIndex];
+        if (!mainButton.classList.contains('clicked')) {
+          mainButton.classList.add('clicked');
+          clickedCount++;
+        }
+      }
+
+      if (clickedCount === buttons.length) {
+        setTimeout(() => {
+          window.location.href = "application/home.html";
+        }, 2000);
+      }
+    }
+  </script>
+</body>
+</html>

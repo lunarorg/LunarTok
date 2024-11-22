@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LunarTok</title>
+  <style>
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0a0c0e;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+    }
+
+    .top-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .top-section img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .top-section h4 {
+      font-size: 1.2rem;
+      margin: 10px 0 5px;
+    }
+
+    .top-section p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .rounded-body {
+      background-color: #1e1e1e;
+      border: 2px solid white;
+      border-radius: 15px;
+      width: 90%;
+      padding: 20px;
+      margin-top: 30px;
+      box-sizing: border-box;
+    }
+
+    .line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .line:last-child {
+      margin-bottom: 0;
+    }
+
+    .line p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .line button {
+      background-color: #2d4b6b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .line button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-section">
+    <img src="https://lunarorg.github.io/LunarTok/assets/branding/home.png" alt="Logo">
+    <h4>Home</h4>
+    <p>Choose what tools You want to use!</p>
+  </div>
+
+  <div class="rounded-body">
+    <div class="line">
+      <p>Account Generator</p>
+      <button onclick="redirectTo('https://lunarorg.github.io/LunarTok/application/account-generator.html')">Use</button>
+    </div>
+    <div class="line">
+      <p>Live Auto Mute</p>
+      <button onclick="redirectTo('https://lunarorg.github.io/LunarTok/application/auto-mute.html')">Use</button>
+    </div>
+    <div class="line">
+      <p>Live Likes</p>
+      <button onclick="redirectTo('https://lunarorg.github.io/LunarTok/application/live-likes.html')">Use</button>
+    </div>
+    <div class="line">
+      <p>Live Screen Share</p>
+      <button onclick="redirectTo('https://lunarorg.github.io/LunarTok/application/screen-share.html')">Use</button>
+    </div>
+  </div>
+
+  <script>
+
+    function redirectTo(url) {
+      window.location.href = url;
+    }
+  </script>
+</body>
+</html>
